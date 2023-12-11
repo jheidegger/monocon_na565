@@ -5,6 +5,9 @@ pretrained/
 checkpoint/
 results/
 exps/
+dev/calib/
+dev/image_mod/
+dev/label_2/
 *.pth
 dataset/debug_tools.py
 debugger/
