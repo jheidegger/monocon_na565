@@ -35,7 +35,7 @@ set_random_seed(seed)
 cfg.SEED = seed
 tprint(f"Using Random Seed {seed}")
 
-
+print(cfg.SOLVER.OPTIM.NUM_EPOCHS)
 # Initialize Engine
 engine = MonoconEngine(cfg)
 

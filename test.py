@@ -12,15 +12,18 @@ from utils.engine_utils import tprint, load_cfg, generate_random_seed, set_rando
 parser = argparse.ArgumentParser('MonoCon Tester for KITTI 3D Object Detection Dataset')
 parser.add_argument('--config_file',
                     type=str,
-                    help="Path of the config file (.yaml)")
+                    help="Path of the config file (.yaml)",
+                    default="./exps/config.yaml")
 parser.add_argument('--checkpoint_file', 
                     type=str,
+                    default="./exps/checkpoints/",
                     help="Path of the checkpoint file (.pth)")
 parser.add_argument('--gpu_id', type=int, default=0, help="Index of GPU to use for testing")
 parser.add_argument('--evaluate', action='store_true')
 parser.add_argument('--visualize', action='store_true')
 parser.add_argument('--save_dir', 
                     type=str,
+                    default="./results/",
                     help="Path of the directory to save the visualized results")
 
 args = parser.parse_args()
@@ -62,8 +65,7 @@ engine.load_checkpoint(args.checkpoint_file, verbose=True)
 # Evaluate
 if args.evaluate:
     tprint("Mode: Evaluation")
-    engine.evaluate()
-
+    engine.evaluate(get_metrics=False, save_dir=args.save_dir)
 
 # Visualize
 if args.visualize:

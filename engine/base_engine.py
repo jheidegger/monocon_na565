@@ -35,7 +35,7 @@ class BaseEngine:
         # Counter Params (1-based Numbering)
         self.epochs = 1
         
-        target_epochs = (cfg.SOLVER.OPTIM.NUM_EPOCHS)
+        target_epochs = 200#(cfg.SOLVER.OPTIM.NUM_EPOCHS)
         assert (self.epochs <= target_epochs), \
             f"Argument 'target_epochs'({target_epochs}) must be equal to or greater than 'epochs'({self.epochs})."
         self.target_epochs = target_epochs
@@ -92,6 +92,7 @@ class BaseEngine:
         
     def train(self, resume_from: str = None) -> None:
         assert torch.cuda.is_available(), "CUDA is not available."
+        self.target_epochs = 200
         assert (self.epochs < self.target_epochs), \
             "Argument 'target_epochs' must be equal to or greater than 'epochs'."
             

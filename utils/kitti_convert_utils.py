@@ -242,7 +242,7 @@ def kitti_3d_to_file(annos: Dict[str, List[Dict]], img_metas: Dict, folder: str,
             w = csv.writer(f, delimiter=' ', lineterminator='\n')
 
         num_det = len(anno['sample_idx'])
-
+        #print("num_det",num_det)
         ### Skip if there is no detection
         if num_det == 0:
             if not single_file:
@@ -268,6 +268,7 @@ def kitti_3d_to_file(annos: Dict[str, List[Dict]], img_metas: Dict, folder: str,
 
             ### Write the detection to the file
             if single_file:
+                #print([sample_idx, name, truncated, occluded, alpha, *bbox, *dimensions, *location, rotation_y, score])
                 w.writerow([sample_idx, name, truncated, occluded, alpha, *bbox, *dimensions, *location, rotation_y, score])
             else:
                 w.writerow([name, truncated, occluded, alpha, *bbox, *dimensions, *location, rotation_y, score])

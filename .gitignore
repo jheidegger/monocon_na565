@@ -3,6 +3,8 @@ _debug/
 __pycache__/
 pretrained/
 checkpoint/
+results/
+exps/
 *.pth
 dataset/debug_tools.py
 debugger/
